@@ -1,0 +1,20 @@
+
+function CargarSelector() {
+    var listFechas = document.getElementById("Anio");
+    let anoActual = moment().format('YYYY');
+    let ArregloFechas = [];
+    let FechaMin = (parseInt(anoActual) - 25);
+    let FechaMax = (parseInt(anoActual) + 2);
+    for (let i = listFechas.options.length; i >= 0; i--) { //Borrar elementos option de select
+        listFechas.remove(i);
+    }
+
+    for (let index = FechaMin; index <= FechaMax; index++) {
+        var option = document.createElement("option");
+        if(parseInt(anoActual) == index){
+            option.selected = true;
+        }
+        option.text = index;
+        listFechas.add(option);
+    }
+}

@@ -1,0 +1,26 @@
+//Eliminar Hijos
+var item = document.getElementById("ListaGeneral"); //Limpiar lista
+while (item.firstChild) {
+    //The list is LIVE so it will re-index each call
+    item.removeChild(item.firstChild);
+}
+
+//Crear e icrutstar hijos
+let li = document.createElement("li"); //Creo un nuevo div para la nueva tarjeta
+        li.id = "li-Cabezera";
+        li.innerHTML = 'Lista de cotizaciones';
+        li.setAttribute('class', 'list-group-item active');
+        document.getElementById("ListaGeneral").appendChild(li);
+        for (let index = 0; index < data.length; index++) {
+            let btn = document.createElement("button"); //Creo un nuevo div para la nueva tarjeta
+            btn.setAttribute('id', 'boton' + index);
+            btn.setAttribute('onclick', 'AbrirPDF("' + data[index] + '")');
+            btn.setAttribute('class', 'btn btn-secondary btn-lg btn-block');
+            btn.innerHTML = data[index]
+
+            let li = document.createElement("li"); //Creo un nuevo div para la nueva tarjeta
+            li.id = "li" + index;
+            li.setAttribute('class', 'list-group-item');
+            li.appendChild(btn);
+            document.getElementById("ListaGeneral").appendChild(li);
+        }

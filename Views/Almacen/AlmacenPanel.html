@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ('../partials/head.html') %>
+    <!--===============================================================================================-->
+    <!--<link rel="stylesheet" type="text/css" href="css/util.css">-->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <!--===============================================================================================-->
+    <!-- Clientes-->
+    <script src="js/Socios/Socios.js"></script>
+
+</head>
+
+<body>
+    <div class="p-3 align-center">
+        <a href="/"><img width="300" height:"auto" src="images/assets/img/navbar-logo.png" alt="Portada" /></a>
+    </div>
+
+    <!--===============================================MENU================================================-->
+    <ul class="nav justify-content-center bs-perso">
+        <li class="nav-item active">
+            <button onclick="openPage('A1', this, ' #5d8250 ')" class="nav-link danger  active" id="v-pills-home-tab"
+                data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab"
+                aria-controls="v-pills-home" aria-selected="true">Citas</button>
+        </li>
+        <li class="nav-item">
+            <button onclick="openPage('A2', this, ' #5d8250 ')" class="nav-link" id="v-pills-profile-tab"
+                data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
+                aria-controls="v-pills-profile" aria-selected="false">Servicios</button>
+        </li>
+        <li class="nav-item" >
+            <button onclick="openPage('A3', this, ' #5d8250 ')" class="nav-link" id="v-pills-messages-tab"
+                data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab"
+                aria-controls="v-pills-messages" aria-selected="false">Socios</button>
+        </li>
+        <li class="nav-item">
+
+            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings"
+                type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><a class="text-center"
+                    href="/Calendario">Calendario</a></button>
+        </li>
+        <li class="nav-item">
+            <button onclick="openPage('A4', this, ' #5d8250 ')" class="nav-link" id="v-pills-settings-tab"
+                data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab"
+                aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+        </li>
+    </ul>
+
+
+    <!--===============================================CONTENIDO================================================-->
+    <div class="tab-content " id="v-pills-tabContent">
+        <div class="tabcontent tab-pane fade show active p-3" role="tabpanel" aria-labelledby="v-pills-home-tab"
+            id="A1">
+          <!--   <%- include ('Almacen/Despachos.html') %> -->
+        </div>
+        <div class="tabcontent tab-pane show fade p-3" role="tabpanel" aria-labelledby="v-pills-profile-tab" id="A2">
+          
+        </div>
+        <div class="tabcontent tab-pane show fade p-3" role="tabpanel" aria-labelledby="v-pills-messages-tab" id="A3">
+         <!--  <%- include ('Socios/Socios.html') %> -->
+        </div>
+        <div class="tabcontent tab-pane show fade p-3" role="tabpanel" aria-labelledby="v-pills-settings-tab" id="A4">
+            <p>4</p>
+        </div>
+    </div>
+
+
+    </div>
+
+
+
+
+    <!--======================================= SCRIPT TAB ========================================================-->
+    <script>
+        function openPage(pageName, elmnt, color) {
+            // Hide all elements with class="tabcontent" by default */
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Remove the background color of all tablinks/buttons
+            tablinks = document.getElementsByClassName("nav-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+
+            // Show the specific tab content
+            document.getElementById(pageName).style.display = "block";
+
+            // Add the specific color to the button used to open the tab content
+            elmnt.style.backgroundColor = color;
+            document.getElementById(pageName).click();
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById('A1').click();
+    </script>
+
+</body>
+
+</html>
