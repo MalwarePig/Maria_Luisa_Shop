@@ -7,7 +7,7 @@ const SociosController = require('../controllers/SociosController');
 var reinicio = router.get('/', (req, res) => {
 	//res.send('holoo');
 	req.session.loggedin = true;
-	res.render('Almacen/AlmacenPanel.html');
+	res.render('index.html');
 });
 
 //Iniciar logueo
@@ -37,9 +37,19 @@ router.post('/RegistrarSocio', SociosController.RegistrarSocio);
 router.get('/CargarSocios', SociosController.CargarSocios);
 //Actualizar Socios
 router.post('/ActualizarCliente', SociosController.ActualizarCliente);
-
-
  
+router.get('/Almacen', (req, res) => {
+	//res.send('holoo');
+	req.session.loggedin = true;
+	res.render('Almacen/AlmacenPanel.html');
+});
+
+ router.get('/Socios', (req, res) => {
+	//res.send('holoo');
+	req.session.loggedin = true;
+	res.render('Almacen/Socios/Socios.html');
+});
+
 module.exports = router;
 
 /*ESTA ES UNA VERSION DIRECTA SIN VERIFICAR LOGIN

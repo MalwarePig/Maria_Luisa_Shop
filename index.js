@@ -17,14 +17,14 @@ app.set('view engine', 'ejs');//motor de plantillas, permite ejecutar javascript
 //middlewares //Funciones que se ejecutan antes que lleguen a las rutas
 app.use(express.json());//Acceder a la informacion de jason
 app.use(morgan('dev'));//muestra los mensajes en consola de las cargas y peticiones
-app.use(myConnection(mysql,{
+/* app.use(myConnection(mysql,{
      //host: '192.168.2.8',
      host:'localhost',
      user: 'Soporte', //user: 'root',
      password: 'Soporte1702861',
      port: 3306,
      database: 'sandyshop'
-}, 'single'))
+}, 'single')) */
 
 app.use(session({
      secret: 'keyboard cat',  //semilla para criptografia en la seguridad que se envia el id al cliente
