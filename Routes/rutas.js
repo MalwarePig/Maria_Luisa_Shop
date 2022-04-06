@@ -2,6 +2,7 @@ const express = require('express'); //guardar express en una variable de servido
 const router = express.Router(); //usar modulo de router de ex´press
 const UserController = require('../controllers/UserController');
 const SociosController = require('../controllers/SociosController');
+const AlmacenController = require('../Controllers/AlmacenController');
 /////////////////////////////////////////////////////////////////////////// USUARIOS /////////////////////////////////////////////////////////////////////////////////
 //Acceder a login
 var reinicio = router.get('/', (req, res) => {
@@ -41,7 +42,7 @@ router.post('/ActualizarCliente', SociosController.ActualizarCliente);
 router.get('/Almacen', (req, res) => {
 	//res.send('holoo');
 	req.session.loggedin = true;
-	res.render('Almacen/AlmacenPanel.html');
+	res.render('Almacen/whSalidas.html');
 });
 
  router.get('/Socios', (req, res) => {
@@ -49,6 +50,10 @@ router.get('/Almacen', (req, res) => {
 	req.session.loggedin = true;
 	res.render('Almacen/Socios/Socios.html');
 });
+
+
+//Lee las tareas del proyecto
+router.get('/BuscarProductos/:param', AlmacenController.GetProductos);
 
 module.exports = router;
 

@@ -17,14 +17,16 @@ app.set('view engine', 'ejs');//motor de plantillas, permite ejecutar javascript
 //middlewares //Funciones que se ejecutan antes que lleguen a las rutas
 app.use(express.json());//Acceder a la informacion de jason
 app.use(morgan('dev'));//muestra los mensajes en consola de las cargas y peticiones
-/* app.use(myConnection(mysql,{
+app.use(myConnection(mysql,{
      //host: '192.168.2.8',
      host:'localhost',
-     user: 'Soporte', //user: 'root',
-     password: 'Soporte1702861',
+     //user: 'Soporte',
+     user: 'root',
+     password: '1702861',
+     //password: 'Soporte1702861',
      port: 3306,
-     database: 'sandyshop'
-}, 'single')) */
+     database: 'SandyShop'
+}, 'single'))
 
 app.use(session({
      secret: 'keyboard cat',  //semilla para criptografia en la seguridad que se envia el id al cliente
@@ -35,7 +37,6 @@ app.use(session({
           expires: 60 * 60 * 60000 //5 minutos de inactividad y se cierra la sesion
           }
 }))
-// 
 
  /*var bodyParser = require('body-parser');
  app.use(bodyParser.json({limit: '50mb'}));
@@ -45,7 +46,6 @@ app.use(session({
 var bodyParser = require('body-parser');
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 1000000}));
-
 app.use(express.urlencoded({extended: false}));//para que el servidor entienda los datos del navegador al hacer un guardado de formulario
 
 /*app.get('/', function (req, res) {
@@ -55,7 +55,6 @@ app.use(express.urlencoded({extended: false}));//para que el servidor entienda l
 app.use(require('./routes/rutas.js'));//usar las rutas
 
 app.set('trust proxy', true);
-
 //Escuchando el servidor
 app.listen(app.get('port'),() => {
      console.log('servidor escuchando en puerto: ',app.get('port'));

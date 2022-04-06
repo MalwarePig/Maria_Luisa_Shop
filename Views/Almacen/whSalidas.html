@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GEMAK</title>
+    <!------incluir cabezera navegacion----->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <!------ JQUERY PARA USAR AJAX ----->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-----------------------------------------------     IONIC     ---------------------------------------------------------------->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <!-----------------------------------------------     FECHAS MOMENTS     ---------------------------------------------------------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <!-----------------------------------------------     JS     ---------------------------------------------------------------->
+    <script type="text/javascript" src="js/Almacen/Almacen.js"></script>
+</head>
+
+<body>
+    <ion-app>
+        <!-- Cabezera -->
+        <ion-header>
+            <!-- Searchbar in a Toolbar -->
+            <ion-toolbar>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-searchbar id="BProductos" placeholder="Buscar" value="lima" onkeypress="runScript(event)"></ion-searchbar> 
+                        </ion-col>
+                        <ion-col>
+                            <ion-button color="tertiary" onclick="GETPRODUCTS()">
+                                <ion-icon slot="icon-only" name="search-sharp"></ion-icon>
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+
+            </ion-toolbar>
+        </ion-header>
+
+        <!-- Contenido -->
+        <ion-content>
+            <ion-card>
+                <ion-card-content>
+                    <table class="table table-condensed table-hover" id="Herr_Encontradas">
+                        <thead>
+                            <tr>
+                                <th>Categoría</th>
+                                <th>Descripción</th>
+                                <th>Cantidad</th>
+                                <th>Unidades</th>
+                                <th>Mínimo</th>
+                                <th>Máximo</th>
+                                <th>Agregar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                        </tbody>
+                    </table>
+                </ion-card-content>
+            </ion-card>
+            
+
+            <ion-item-divider>
+            </ion-item-divider>
+
+            <ion-card>
+                <ion-card-content>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-item>
+                                <ion-label position="stacked">Categoria</ion-label>
+                                <ion-input type="text" id="Categoria" readonly></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="stacked">Producto</ion-label>
+                                <ion-input type="text" id="Producto" readonly>asd</ion-input>
+                            </ion-item>
+ 
+                            <ion-item>
+                                <ion-label position="stacked">Cantidad</ion-label>
+                                <ion-input type="text" id="Cantidad" > </ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label position="stacked">Unidades</ion-label>
+                                <ion-select placeholder="Unidades">
+                                    <ion-select-option value="Paquetes">Paquetes</ion-select-option>
+                                    <ion-select-option value="Pieza">Pieza</ion-select-option>
+                                    <ion-select-option value="Litro">Litro</ion-select-option>
+                                    <ion-select-option value="Kilo">Kilo</ion-select-option>
+
+                                </ion-select>
+                            </ion-item>
+
+                        </ion-row>
+
+                        <ion-row>
+                            <div margin-vertical text-right>
+                                <ion-button id="Boton" onclick="Agregar()">
+                                    <ion-icon name="add-circle" slot="start"></ion-icon>
+                                    Agregar
+                                </ion-button>
+                                <ion-button fill="outline" color="danger" id="button-cancel" onclick="Limpiar()">
+                                    <ion-icon name="trash" slot="start"></ion-icon>
+                                    Limpiar
+                                </ion-button>
+                            </div>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+
+            <ion-card-content>
+                <table class="table table-condensed table-hover" id="Herr_Encontradas">
+                    <thead>
+                        <tr>
+                            <th>Categoriía</th>
+                            <th>Descripción</th>
+                            <th>Cantidad</th>
+                            <th>Unidades</th>
+                            <th>Mínimo</th>
+                            <th>Máximo</th>
+                            <th>Agregar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </ion-card-content>
+
+
+        </ion-content>
+
+        <!-- Navigation-->
+        <ion-tab-bar slot="bottom">
+            <ion-tab-button tab="tab-schedule">
+                <ion-icon name="calendar"></ion-icon>
+                <ion-label>Citas</ion-label>
+                <ion-badge>6</ion-badge>
+            </ion-tab-button>
+
+            <ion-tab-button tab="tab-speaker" onclick="RutaSocios()">
+                <ion-icon name="person-circle"></ion-icon>
+                <ion-label>Socios</ion-label>
+            </ion-tab-button>
+
+            <ion-tab-button tab="tab-map" onclick="RutaAlmacen()">
+                <ion-icon name="map"></ion-icon>
+                <ion-label>Almacen</ion-label>
+            </ion-tab-button>
+
+            <ion-tab-button tab="tab-about">
+                <ion-icon name="information-circle"></ion-icon>
+                <ion-label>Configuración</ion-label>
+            </ion-tab-button>
+            
+        </ion-tab-bar>
+    </ion-app>
+</body>
+
+</html>
