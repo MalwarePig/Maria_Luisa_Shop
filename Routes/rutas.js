@@ -45,6 +45,10 @@ router.get('/Almacen', (req, res) => {
 	res.render('Almacen/whSalidas.html');
 });
 
+
+
+
+
  router.get('/Socios', (req, res) => {
 	//res.send('holoo');
 	req.session.loggedin = true;
@@ -54,6 +58,8 @@ router.get('/Almacen', (req, res) => {
 
 //Lee las tareas del proyecto
 router.get('/BuscarProductos/:param', AlmacenController.GetProductos);
+router.post('/GuardarNota', AlmacenController.GuardarNota);
+
 
 module.exports = router;
 

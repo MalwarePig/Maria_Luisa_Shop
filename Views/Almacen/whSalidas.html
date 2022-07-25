@@ -34,7 +34,8 @@
                 <ion-grid>
                     <ion-row>
                         <ion-col>
-                            <ion-searchbar id="BProductos" placeholder="Buscar" value="lima" onkeypress="runScript(event)"></ion-searchbar> 
+                            <ion-searchbar id="BProductos" placeholder="Buscar" value="lima"
+                                onkeypress="runScript(event)"></ion-searchbar>
                         </ion-col>
                         <ion-col>
                             <ion-button color="tertiary" onclick="GETPRODUCTS()">
@@ -64,12 +65,12 @@
                             </tr>
                         </thead>
                         <tbody>
-    
+
                         </tbody>
                     </table>
                 </ion-card-content>
             </ion-card>
-            
+
 
             <ion-item-divider>
             </ion-item-divider>
@@ -87,15 +88,15 @@
                                 <ion-label position="stacked">Producto</ion-label>
                                 <ion-input type="text" id="Producto" readonly>asd</ion-input>
                             </ion-item>
- 
+
                             <ion-item>
                                 <ion-label position="stacked">Cantidad</ion-label>
-                                <ion-input type="text" id="Cantidad" > </ion-input>
+                                <ion-input type="text" id="Cantidad"> </ion-input>
                             </ion-item>
 
                             <ion-item>
                                 <ion-label position="stacked">Unidades</ion-label>
-                                <ion-select placeholder="Unidades">
+                                <ion-select placeholder="Unidades" id="Unidades">
                                     <ion-select-option value="Paquetes">Paquetes</ion-select-option>
                                     <ion-select-option value="Pieza">Pieza</ion-select-option>
                                     <ion-select-option value="Litro">Litro</ion-select-option>
@@ -108,7 +109,7 @@
 
                         <ion-row>
                             <div margin-vertical text-right>
-                                <ion-button id="Boton" onclick="Agregar()">
+                                <ion-button id="Boton" onclick="CrearNota()">
                                     <ion-icon name="add-circle" slot="start"></ion-icon>
                                     Agregar
                                 </ion-button>
@@ -122,24 +123,37 @@
                 </ion-card-content>
             </ion-card>
 
-            <ion-card-content>
-                <table class="table table-condensed table-hover" id="Herr_Encontradas">
-                    <thead>
-                        <tr>
-                            <th>Categoriía</th>
-                            <th>Descripción</th>
-                            <th>Cantidad</th>
-                            <th>Unidades</th>
-                            <th>Mínimo</th>
-                            <th>Máximo</th>
-                            <th>Agregar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <ion-card>
+                <ion-card-content>
+                    <table class="table table-condensed table-hover" id="TablaNotaSalida">
+                        <thead>
+                            <tr>
+                                <th>Descripción</th>
+                                <th>Cantidad</th>
+                                <th>Unidades</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                    </tbody>
-                </table>
-            </ion-card-content>
+                        </tbody>
+                    </table>
+                </ion-card-content>
+            </ion-card>
+
+
+            <ion-grid>
+                <ion-row class="ion-align-items-center">
+                   
+                  <ion-col size="12" class="ion-text-center">
+                    <ion-button fill="clear" onclick="GuardarNota()">
+                      <span>Aceptar</span> 
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              
+
 
 
         </ion-content>
@@ -166,7 +180,7 @@
                 <ion-icon name="information-circle"></ion-icon>
                 <ion-label>Configuración</ion-label>
             </ion-tab-button>
-            
+
         </ion-tab-bar>
     </ion-app>
 </body>

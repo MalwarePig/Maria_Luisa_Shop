@@ -17,6 +17,7 @@ app.set('view engine', 'ejs');//motor de plantillas, permite ejecutar javascript
 //middlewares //Funciones que se ejecutan antes que lleguen a las rutas
 app.use(express.json());//Acceder a la informacion de jason
 app.use(morgan('dev'));//muestra los mensajes en consola de las cargas y peticiones
+
 app.use(myConnection(mysql,{
      //host: '192.168.2.8',
      host:'localhost',
@@ -37,6 +38,7 @@ app.use(session({
           expires: 60 * 60 * 60000 //5 minutos de inactividad y se cierra la sesion
           }
 }))
+
 
  /*var bodyParser = require('body-parser');
  app.use(bodyParser.json({limit: '50mb'}));
@@ -61,19 +63,28 @@ app.listen(app.get('port'),() => {
      console.log('ip: ' +Object.values(OS.networkInterfaces())[0][0].address);
      console.log('Maquina: ' +OS.hostname());
 });
+
 /*
 function mensaje() {
      console.log('Maquina: ' +OS.hostname());
     }
     setInterval(mensaje, 1000);
 */
+
 //file statics
 app.use(express.static(path.join(__dirname, 'public')));//para archivos como imagenes,css,javascript
-/* app.use(fileupload()); */
-
+ 
 //ERROR 404
 app.use('*', function(req, res, next) {
      res.status(404).render('Admin/Error.html');
    next();
-});
- 
+}); 
+
+
+
+
+
+
+
+
+
